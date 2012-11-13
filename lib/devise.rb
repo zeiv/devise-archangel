@@ -8,7 +8,7 @@ require 'securerandom'
 module Devise
   autoload :Delegator,     'devise/delegator'
   autoload :FailureApp,    'devise/failure_app'
-  autoload :OmniAuth,      'devise/omniauth'
+  autoload :Archangel,      'devise/archangel'
   autoload :ParamFilter,   'devise/param_filter'
   autoload :TestHelpers,   'devise/test_helpers'
   autoload :TimeInflector, 'devise/time_inflector'
@@ -205,10 +205,10 @@ module Devise
   mattr_accessor :router_name
   @@router_name = nil
 
-  # Set the omniauth path prefix so it can be overriden when
+  # Set the archangel path prefix so it can be overriden when
   # Devise is used in a mountable engine
-  mattr_accessor :omniauth_path_prefix
-  @@omniauth_path_prefix = nil
+  mattr_accessor :archangel_path_prefix
+  @@archangel_path_prefix = nil
 
   def self.encryptor=(value)
     warn "\n[DEVISE] To select a encryption which isn't bcrypt, you should use devise-encryptable gem.\n"
@@ -228,9 +228,9 @@ module Devise
   mattr_reader :mappings
   @@mappings = ActiveSupport::OrderedHash.new
 
-  # Omniauth configurations.
-  mattr_reader :omniauth_configs
-  @@omniauth_configs = ActiveSupport::OrderedHash.new
+  # archangel configurations.
+  mattr_reader :archangel_configs
+  @@archangel_configs = ActiveSupport::OrderedHash.new
 
   # Define a set of modules that are called when a mapping is added.
   mattr_reader :helpers
@@ -275,8 +275,8 @@ module Devise
     router_name || :main_app
   end
 
-  def self.omniauth_providers
-    omniauth_configs.keys
+  def self.archangel_providers
+    archangel_configs.keys
   end
 
   # Get the mailer class from the mailer reference object.
@@ -376,14 +376,14 @@ module Devise
     @@warden_config_block = block
   end
 
-  # Specify an omniauth provider.
+  # Specify an archangel provider.
   #
-  #   config.omniauth :github, APP_ID, APP_SECRET
+  #   config.archangel :github, APP_ID, APP_SECRET
   #
-  def self.omniauth(provider, *args)
-    @@helpers << Devise::OmniAuth::UrlHelpers
-    config = Devise::OmniAuth::Config.new(provider, args)
-    @@omniauth_configs[config.strategy_name.to_sym] = config
+  def self.archangel(provider, *args)
+    @@helpers << Devise::Archangel::UrlHelpers
+    config = Devise::Archangel::Config.new(provider, args)
+    @@archangel_configs[config.strategy_name.to_sym] = config
   end
 
   # Include helpers in the given scope to AC and AV.

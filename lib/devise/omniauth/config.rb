@@ -1,5 +1,5 @@
 module Devise
-  module OmniAuth
+  module Archangel
     class StrategyNotFound < NameError
       def initialize(strategy)
         @strategy = strategy
@@ -26,16 +26,16 @@ module Devise
       end
 
       def find_strategy
-        ::OmniAuth.strategies.find do |strategy_class|
-          strategy_class.to_s =~ /#{::OmniAuth::Utils.camelize(strategy_name)}$/ ||
+        ::Archangel.strategies.find do |strategy_class|
+          strategy_class.to_s =~ /#{::Archangel::Utils.camelize(strategy_name)}$/ ||
             strategy_class.default_options[:name] == strategy_name
         end
       end
 
       def autoload_strategy
-        name = ::OmniAuth::Utils.camelize(provider.to_s)
-        if ::OmniAuth::Strategies.const_defined?(name)
-          ::OmniAuth::Strategies.const_get(name)
+        name = ::Archangel::Utils.camelize(provider.to_s)
+        if ::Archangel::Strategies.const_defined?(name)
+          ::Archangel::Strategies.const_get(name)
         else
           raise StrategyNotFound, name
         end

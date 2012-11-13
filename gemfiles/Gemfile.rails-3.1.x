@@ -3,12 +3,11 @@ source "http://rubygems.org"
 gem "devise", :path => ".."
 
 gem "rails", "~> 3.1.0"
-gem "omniauth", "~> 1.0.0"
-gem "omniauth-oauth2", "~> 1.0.0"
+gem "archangel"
 gem "rdoc"
 
 group :test do
-  gem "omniauth-facebook"
+  gem "archangel"
   gem "omniauth-openid", "~> 1.0.1"
   gem "webrat", "0.7.2", :require => false
   gem "mocha", :require => false

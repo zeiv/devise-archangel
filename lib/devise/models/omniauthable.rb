@@ -1,18 +1,18 @@
-require 'devise/omniauth'
+require 'devise/archangel'
 
 module Devise
   module Models
-    # Adds OmniAuth support to your model.
+    # Adds Archangel support to your model.
     #
     # == Options
     #
     # Oauthable adds the following options to devise_for:
     #
-    #   * +omniauth_providers+: Which providers are avaialble to this model. It expects an array:
+    #   * +archangel_providers+: Which providers are avaialble to this model. It expects an array:
     #
-    #       devise_for :database_authenticatable, :omniauthable, :omniauth_providers => [:twitter]
+    #       devise_for :database_authenticatable, :archangelable, :archangel_providers => [:twitter]
     #
-    module Omniauthable
+    module Archangelable
       extend ActiveSupport::Concern
 
       def self.required_fields(klass)
@@ -20,7 +20,7 @@ module Devise
       end
 
       module ClassMethods
-        Devise::Models.config(self, :omniauth_providers)
+        Devise::Models.config(self, :archangel_providers)
       end
     end
   end
