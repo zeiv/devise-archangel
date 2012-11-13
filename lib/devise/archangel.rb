@@ -6,9 +6,9 @@ rescue LoadError
   raise
 end
 
-unless Archangel::VERSION =~ /^1\./
-  raise "You are using an old Archangel version, please ensure you have 1.0.0.pr2 version or later installed."
-end
+#~ unless Archangel::VERSION =~ /^1\./
+  #~ raise "You are using an old Archangel version, please ensure you have 1.0.0.pr2 version or later installed."
+#~ end
 
 # Clean up the default path_prefix. It will be automatically set by Devise.
 Archangel.config.path_prefix = nil
