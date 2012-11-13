@@ -10,7 +10,7 @@ Devise.with_options :model => true do |d|
   end
 
   # Other authentications
-  d.add_module :omniauthable, :controller => :omniauth_callbacks,  :route => :omniauth_callback
+  d.add_module :archangelable, :controller => :archangel_callbacks,  :route => :archangel_callback
 
   # Misc after
   routes = [nil, :new, :edit]
