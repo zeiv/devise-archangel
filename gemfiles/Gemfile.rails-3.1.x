@@ -1,8 +1,9 @@
 source "http://rubygems.org"
 
-gem "devise", :path => ".."
+gem "devise-archangel", :path => ".."
 
 gem "rails", "~> 3.1.0"
+gem "devise"
 gem "archangel"
 gem "rdoc"
 

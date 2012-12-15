@@ -5,13 +5,7 @@ gemspec
 gem "rails", "~> 3.2.6"
 gem "archangel"
 gem "rdoc"
-
-group :test do
-  gem "archangel"
-  gem "omniauth-openid", "~> 1.0.1"
-  gem "webrat", "0.7.2", :require => false
-  gem "mocha", "0.10.0", :require => false
-end
+gem "devise"
 
 platforms :jruby do
   gem "activerecord-jdbc-adapter"
